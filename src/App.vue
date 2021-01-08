@@ -42,10 +42,14 @@
             <div class="col s12 m4">
                 <div class="row">
                     <div class="col  s12 m6">
-                        <h6 class="grey-text text-lighten-5">HOME</h6>
+                        <a href="#">
+                          <h6 class="grey-text text-lighten-5">HOME</h6>
+                        </a>
                     </div>
                     <div class="col s12 m6">
-                        <h6 class="grey-text text-lighten-5">ABOUT</h6>
+                        <a href="#">
+                          <h6 class="grey-text text-lighten-5">ABOUT</h6>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -55,10 +59,14 @@
              <div class="col s12 m4">
                 <div class="row">
                     <div class="col  s12 m6">
-                        <h6 class="grey-text text-lighten-5">GALLERY</h6>
+                        <a href="#">
+                          <h6 class="grey-text text-lighten-5">GALLERY</h6>
+                        </a>
                     </div>
                     <div class="col s12 m6">
-                        <h6 class="grey-text text-lighten-5">CONTACT</h6>
+                        <a href="#">
+                          <h6 class="grey-text text-lighten-5">CONTACT</h6>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -86,16 +94,24 @@
             <div class="col s12  m1" style="height:200px;">
                 <div class="row socials">
                     <div class="col s12">
-                        <i class="right white-text fab fa-instagram fa-3x"></i>
+                        <a v-bind:href="instagram">
+                          <i class="right white-text fab fa-instagram fa-3x"></i>
+                        </a>
                     </div>
                     <div class="col s12 ">
+                      <a v-bind:href="twitter">
                         <i class="right white-text fab fa-twitter-square fa-3x"></i>
+                      </a>
                     </div>
                     <div class="col s12">
-                        <i class="right white-text fab fa-snapchat-square fa-3x"></i>
+                        <a v-bind:href="snapchat">
+                          <i class="right white-text fab fa-snapchat-square fa-3x"></i>                        
+                        </a>
                     </div>
                     <div class="col s12">
-                        <i class="right white-text fas fa-envelope-square fa-3x"></i>
+                        <a v-bind:href="'mailto:'+email">
+                          <i class="right white-text fas fa-envelope-square fa-3x"></i>                      
+                        </a>
                     </div>
                 </div>
             </div>
@@ -106,15 +122,38 @@
 </template>
 
 <script>
-
+import axios from "axios";
 
 export default {
   name: "App",
   data() {
     return {
-      title: "AQUILA AVEION"
+      title:  "AQUILA ",
+      instagram:"#",
+      twitter:"#",
+      snapchat:"#",
+      email:"#"
     };
+  },
+  async mounted(){
+  
+    try{
+      const res = await axios.get("https://hirng-x2021.glitch.me/api");
+      console.log(res.data.social_media.twitter);
+      this.title = res.data.name;
+      let tw="https://www.twitter.com/"+res.data.social_media.twitter;
+      let snap="https://www.snapchat.com/"+res.data.social_media.snapchat;
+      let mail = res.data.social_media.email;
+      let ig="https://www.instagram.com/"+res.data.social_media.instagram
+      this.instagram=ig;
+      this.twitter=tw;
+      this.snapchat=snap;
+      this.email=mail;
+    }catch(e){
+      console.log(e);
+    }
   }
+
 };
 </script>
 
@@ -150,7 +189,7 @@ height:750px;
   width:90% !important;
 }
 .main-image{
-  background:url("~@/assets/4.jpg");
+  background:url("~@/assets/3.jpg");
   background-color:#BD0F4D;
   background-repeat:no-repeat;
   background-size:cover;
