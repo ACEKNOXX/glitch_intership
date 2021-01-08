@@ -73,12 +73,11 @@
 
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
+        <li><a href="#!">HOME</a></li>
+        <li><a href="#!">ABOUT</a></li>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="#!">three</a></li>
-        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        <li><a href="#!">GALLERY</a></li>
+        <li><a href="#!">CONTACT</a></li>        
       </ul>
         
         <div class="row" style="margin-top:200px;">
